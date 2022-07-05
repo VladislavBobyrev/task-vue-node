@@ -1,0 +1,18 @@
+nav {
+  background: $bg-primary-75;
+  width: 300px;
+  height: 100%;
+
+  padding: 1rem;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    li {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}

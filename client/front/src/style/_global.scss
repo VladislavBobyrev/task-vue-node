@@ -1,0 +1,101 @@
+html {
+  display: flex;
+  min-height: -webkit-fill-available;
+  overflow: hidden;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat";
+  line-height: 1.5;
+  background: $bg-basic;
+  color: $color-secondary;
+}
+
+#app {
+  height: inherit;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+main {
+  padding: 1rem;
+}
+.content {
+  display: flex;
+}
+.content {
+  nav {
+    position: fixed;
+    top: 34;
+    left: -200px;
+    width: 300px;
+    height: calc(100vh - 34px);
+    opacity: 0;
+  }
+  main {
+    position: relative;
+    width: 100%;
+  }
+}
+
+.content.active {
+  nav {
+    left: 0;
+    z-index: 2;
+    opacity: 1;
+  }
+
+  main {
+    left: 300px;
+    width: calc(100% - 300px);
+  }
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.tasks {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.task {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  border-bottom: 1px solid;
+  border-color: hsla(0, 0%, 100%, 0.1);
+  
+
+  &:hover {
+    .task__edit {
+      visibility: visible;
+    }
+  }
+}
+.task__edit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  visibility: hidden;
+}
+.tack-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.task__add {
+  display: flex;
+  gap: .5rem;
+}

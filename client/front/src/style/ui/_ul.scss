@@ -1,0 +1,32 @@
+.content {
+  position: relative;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  background: transparent;
+}
+
+.icon {
+  color: var(--color-secondary-50);
+
+  &:hover {
+    color: var(--color-secondary);
+  }
+}
+
+.color-violet {
+  color: violet;
+}
+.color-succes {
+  color: #25b84c;
+}
+.color-blue {
+  color: #5297ff;;
+}
+tspan{
+  font-size: 8px;
+}

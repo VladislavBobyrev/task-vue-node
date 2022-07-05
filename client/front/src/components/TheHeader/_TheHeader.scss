@@ -1,0 +1,9 @@
+header {
+  background: $bg-primary;
+  padding: 0.3rem 1rem;
+  
+  .manage {
+    display: flex;
+    gap: 2rem;
+  }
+}
