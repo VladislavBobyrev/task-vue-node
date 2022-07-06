@@ -25,6 +25,9 @@ body {
   grid-template-rows: auto 1fr;
 }
 
+.flex {
+  display: flex;
+}
 main {
   padding: 1rem;
 }
@@ -72,12 +75,12 @@ main {
 
 .task {
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
   position: relative;
   border-bottom: 1px solid;
   border-color: hsla(0, 0%, 100%, 0.1);
-  
-
+  padding: 0 2rem 0 0;
   &:hover {
     .task__edit {
       visibility: visible;
@@ -93,9 +96,32 @@ main {
 .tack-info {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 3px;
+  min-width: 6rem;
+  input {
+    width: 3rem;
+    background: transparent;
+    text-align: center;
+  }
+
+  button {
+    color: $color-secondary;
+  }
 }
 .task__add {
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
+}
+.task-price {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+@media (max-width: 768px) {
+  html{
+    font-size: 12px;
+  }
 }
