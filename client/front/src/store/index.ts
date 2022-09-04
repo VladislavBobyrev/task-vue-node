@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import lists from './modules/listTask/listTask.modules'
 
 export default createStore({
   state: {
@@ -10,5 +11,6 @@ export default createStore({
   actions: {
   },
   modules: {
+    lists,
   },
 })

@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Montserrat';
+  // BOLD 700
+  src: url(/src/assets/fonts/static/Montserrat-Bold.ttf);
+  font-weight: 700;
+  // для более быстрой и корректной отрисовки шрифтов
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  // SemiBold 600
+  src: url(/src/assets/fonts/static/Montserrat-SemiBold.ttf );
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  // SemiBold 500
+  src: url(/src/assets/fonts/static/Montserrat-Medium.ttf );
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  // SemiBold 400
+  src: url(/src/assets/fonts/static/Montserrat-Regular.ttf );
+  font-weight: 400;
+  font-display: swap;
+}

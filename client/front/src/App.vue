@@ -14,68 +14,10 @@
       </div>
      </div>
       <div class="main-body">
-        <ul class="tasks">
-          <li class="task">
-            <div class="flex">
-                  <label>
-                    <input type="checkbox">
-                  </label>
-                <div class="tack-info" >
-                  <span class="task__text">колбаса</span>
-                  <span class="task__date">5.12.22 г.</span>
-                </div>
-            </div>
-
-            <div class="flex">
-                <div class="tack-info">
-                  <label for="price">стоимость</label>
-                  <input class="price" name='price' type="text" placeholder="123">
-                </div>
-
-                <div class="tack-info">
-                    <label for="count">count</label>
-                  <div>
-                    <button>+</button>
-                    <input type="text" name="count" placeholder="1">
-                    <button>-</button>
-                </div>
-            </div>
-           </div>
-           <div class="task__edit icon">
-            <svg width="24" height="24"><g fill="none" fill-rule="evenodd"><path fill="currentColor" d="M9.5 19h10a.5.5 0 110 1h-10a.5.5 0 110-1z"></path><path stroke="currentColor" d="M4.42 16.03a1.5 1.5 0 00-.43.9l-.22 2.02a.5.5 0 00.55.55l2.02-.21a1.5 1.5 0 00.9-.44L18.7 7.4a1.5 1.5 0 000-2.12l-.7-.7a1.5 1.5 0 00-2.13 0L4.42 16.02z"></path></g></svg>
-           </div>
-          </li>
-                     <li class="task">
-            <div class="flex">
-                  <label>
-                    <input type="checkbox">
-                  </label>
-                <div class="tack-info" >
-                  <span class="task__text">колбаса</span>
-                  <span class="task__date">5.12.22 г.</span>
-                </div>
-            </div>
-
-            <div class="flex">
-                <div class="tack-info">
-                  <label for="price">стоимость</label>
-                  <input class="price" name='price' type="text" placeholder="123">
-                </div>
-
-                <div class="tack-info">
-                    <label for="count">count</label>
-                  <div>
-                    <button>+</button>
-                    <input type="text" name="count" placeholder="1">
-                    <button>-</button>
-                </div>
-            </div>
-           </div>
-           <div class="task__edit icon">
-            <svg width="24" height="24"><g fill="none" fill-rule="evenodd"><path fill="currentColor" d="M9.5 19h10a.5.5 0 110 1h-10a.5.5 0 110-1z"></path><path stroke="currentColor" d="M4.42 16.03a1.5 1.5 0 00-.43.9l-.22 2.02a.5.5 0 00.55.55l2.02-.21a1.5 1.5 0 00.9-.44L18.7 7.4a1.5 1.5 0 000-2.12l-.7-.7a1.5 1.5 0 00-2.13 0L4.42 16.02z"></path></g></svg>
-           </div>
-          </li>
+        <ul class="tasks" v-if="requestTasks">
+          <app-task v-for="task in requestTasks" :key="task.date" :task='task'></app-task>
         </ul>
+        <h3 class="main-body__subtitle main-body-subtitle subtitle" v-else>Добавте первую задачу</h3>
         <button class="task__add icon">
           <svg width="13" height="13"><path d="M6 6V.5a.5.5 0 0 1 1 0V6h5.5a.5.5 0 1 1 0 1H7v5.5a.5.5 0 1 1-1 0V7H.5a.5.5 0 0 1 0-1H6z" fill="currentColor" fill-rule="evenodd"></path></svg>
           <span>Добавить задачу</span>
@@ -86,7 +28,13 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 import TheHeader from './components/TheHeader/TheHeader.vue'
 import TheNav from './components/TheNav/TheNav.vue'
+import appTask from './components/AppTask/appTask.vue'
 
+const store = useStore()
+store.dispatch('lists/asyncLoad')
+const requestTasks = computed(() => store.state.lists.requests)
 </script>
