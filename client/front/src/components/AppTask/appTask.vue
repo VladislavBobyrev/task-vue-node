@@ -1,42 +1,56 @@
 <template>
   <li class="task" >
     <div class="flex">
-          <label>
-            <input type="checkbox">
-          </label>
-        <div class="tack-info" >
-          <span class="task__text">{{task.name}}</span>
-          <span class="task__date">{{task.date}}</span>
-        </div>
+       <label class="task__label checkbox__label">
+          <input class="checkbox__input" type="checkbox" @click="deleteList(task.id)">
+          <div class="tack-info checkbox__mark" >
+            <span class="task__text">{{task.name}}</span>
+            <span class="task__date">{{task.date}}</span>
+          </div>
+        </label>
     </div>
-
     <div class="flex">
       <div class="tack-info">
-        <input class="price" name='price' type="text" placeholder="prise">
-        <label for="price">{{task.price}}</label>
+        <label for="price">Цeна</label>
+        <input class="price" name='price' type="text" :placeholder="task.price">
       </div>
 
       <div class="tack-info">
-        <label for="count">count</label>
+        <label for="count">Кол-во</label>
         <div>
-          <button>+</button>
-          {{task.count}}
-          <input type="text" name="count" placeholder="">
-          <button>-</button>
+          <!-- <button>+</button> -->
+          <input type="text" name="count" :placeholder="task.count">
+          <!-- <button>-</button> -->
         </div>
       </div>
     </div>
-
-    <div class="task__edit icon">
+    <!-- <div class="task__edit icon" @click="updateTask(task)" @keypress="del">
       <svg width="24" height="24"><g fill="none" fill-rule="evenodd"><path fill="currentColor" d="M9.5 19h10a.5.5 0 110 1h-10a.5.5 0 110-1z"></path><path stroke="currentColor" d="M4.42 16.03a1.5 1.5 0 00-.43.9l-.22 2.02a.5.5 0 00.55.55l2.02-.21a1.5 1.5 0 00.9-.44L18.7 7.4a1.5 1.5 0 000-2.12l-.7-.7a1.5 1.5 0 00-2.13 0L4.42 16.02z"></path></g></svg>
-    </div>
+    </div> -->
   </li>
 </template>
 
-<script lang="ts" >
-import { defineComponent } from 'vue'
+<script setup lang="ts" >
+import { defineProps } from 'vue'
+import { useStore } from 'vuex'
 
-export default defineComponent({
-  props: ['task'],
-})
+defineProps<{task:any}>()
+
+const store = useStore()
+
+let idSetTimeout:number
+const deleteList = (id:number) =>
+{
+  if (idSetTimeout)
+  {
+    clearTimeout(idSetTimeout)
+    idSetTimeout = 0
+    return
+  }
+  idSetTimeout = setTimeout(() =>
+  {
+    store.dispatch('lists/asyncDeleteList', id)
+  }, 4000)
+}
+
 </script>

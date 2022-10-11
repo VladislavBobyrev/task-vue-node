@@ -1,0 +1,14 @@
+.form-task{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  grid-template-areas: 
+  'name name'
+  'price count'
+  '. button'
+  ;
+}
+
+.form-control:nth-child(1) {
+  grid-area: name;
+}

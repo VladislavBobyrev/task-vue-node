@@ -8,6 +8,18 @@ export const getData = async (src:string) =>
   const { data } = await axios.get(src)
   return data
 }
+export const postData = async (src:string, options:any) =>
+{
+  const data = await fetch(src, {
+    method: 'POST',
+    body: JSON.stringify(options),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+
+  return data
+}
 
 // /**
 //  * Обновлени в БД задач

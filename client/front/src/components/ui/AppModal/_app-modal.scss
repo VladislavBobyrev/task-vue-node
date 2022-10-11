@@ -1,0 +1,23 @@
+.modal {
+  position: fixed;
+  top: 5rem;
+  width: 90%;
+  max-width: 600px;
+  padding: 1rem;
+  background: var(--color-basic);
+  z-index: 1000;
+  left: 50%;
+  border-radius: 5px;
+  transform: translateX(-50%);
+  box-shadow: 2px 3px 10px rgb(0 0 0 / 20%);
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgb(255 255 255 / 50%);
+  z-index: 100;
+}

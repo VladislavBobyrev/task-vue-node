@@ -49,6 +49,7 @@ module.exports = {
     'no-continue': 'off',
     'guard-for-in': 'off',
     'linebreak-style': ['error', 'windows'],
+    'vue/no-multiple-template-root': 'off',
     semi: ['error', 'never'],
     'vuejs-accessibility/label-has-for': [
       'off',

@@ -1,0 +1,98 @@
+// <label class='checkbox__label'>
+//  <input class="checkbox__input" type="checkbox" name="checkbox" checked >
+//  <span class="checkbox__mark">something text 1</span>
+// </label>
+
+.checkbox__label {
+  --secondary: #64738e;
+  --border: #b5b4f6;
+  --brand-10: #eee9ff;
+  --brand-60: #5025c7;
+  --brand-50: #313476;
+  --focused: #b4baf6;
+  --focus-border: 2px solid #4c58dd;
+  --disabled-border: #f0e5ff;
+  --disabled-text: #dccfee;
+}
+
+.checkbox__input {
+  position: absolute;
+  opacity: 0;
+  /*  Добавил по пикселю для корректной работы скринридеров */
+  width: 1px;
+  height: 1px;
+}
+
+.checkbox__mark {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  padding-left: 3rem;
+}
+
+.checkbox__mark::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 1.2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid #999;
+  // background-color: var(--primary);
+  border-radius: 4px;
+  transform: translateY(-50%);
+}
+
+.checkbox__mark::after {
+  content: "";
+  position: absolute;
+  left: 0.8rem;
+  top: 1.3rem;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease;
+}
+
+.checkbox__input:hover + .checkbox__mark:after {
+  width: 1.2rem;
+  height: 1.2rem;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M13.707 3.293a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 1.414-1.414L6 9.586l6.293-6.293a1 1 0 0 1 1.414 0Z' fill='%23999'/%3e%3c/svg%3e");
+}
+.checkbox__input:checked + .checkbox__mark:after {
+  content: "";
+  position: absolute;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 100%;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M13.707 3.293a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 1.414-1.414L6 9.586l6.293-6.293a1 1 0 0 1 1.414 0Z' fill='%23ffffff'/%3e%3c/svg%3e");
+}
+
+// .checkbox__input:checked:hover + .checkbox__mark:after {
+//   width: 1.5rem;
+//   height: 1.5rem;
+//   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M13.707 3.293a1 1 0 0 1 0 1.414l-7 7a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 1.414-1.414L6 9.586l6.293-6.293a1 1 0 0 1 1.414 0Z' fill='%233dd445'/%3e%3c/svg%3e");
+// }
+
+.checkbox__input:checked + .checkbox__mark {
+  text-decoration: line-through;
+}
+.checkbox__input:checked + .checkbox__mark::before {
+  // border: 1px solid var(--brand-50);
+  border: 1px solid var(--color-secondary);
+}
+
+.checkbox__input:focus-visible + .checkbox__mark::before {
+  outline: 1px solid #999;
+  border: 1px solid transparent;
+}
+
+.checkbox__input[disabled] + .checkbox__mark:before {
+  border: 1px solid var(--disabled-border);
+}
+
+.checkbox__input[disabled] + .checkbox__mark {
+  color: var(--disabled-text);
+}
+
+.checkbox__input[disabled]:checked + .checkbox__mark::after {
+  background: var(--brand-10);
+}
