@@ -1,12 +1,6 @@
 import { Commit } from 'vuex'
 import { getData, postData } from '@/api/api'
 import { IListTask } from './listTask.interface'
-// const listTask: IListTask = {
-//   count: 1,
-//   date: new Date(),
-//   name: 'Колбаса',
-//   price: 115,
-// }
 
 const requests: IListTask[] = []
 
@@ -15,7 +9,7 @@ export default {
 
   state: {
     return: {
-      requests,
+      requests: [],
     },
   },
   getters: {
@@ -54,7 +48,15 @@ export default {
     async asyncCreateList({ commit }: { commit: Commit }, payload:any)
     {
       const request = await postData('http://localhost:5445/api/create-task/', payload)
-      return request.json().then((newTasks) =>
+      return request.json().then((newTasks: IListTask[]) =>
+      {
+        commit('SET_REQUEST', newTasks)
+      })
+    },
+    async asyncUpdateListId({ commit }: { commit: Commit }, payload:any)
+    {
+      const request = await postData('http://localhost:5445/api/update-taskid/', payload)
+      return request.json().then((newTasks: IListTask[]) =>
       {
         commit('SET_REQUEST', newTasks)
       })

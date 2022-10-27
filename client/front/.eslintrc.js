@@ -44,13 +44,15 @@ module.exports = {
     'no-nested-ternary': 'off',
     'no-underscore-dangle': 'off',
     'no-empty-function': 'off',
+    '@typescript-eslint/no-empty-function': 0,
     'no-mixed-operators': 'off',
     'no-lonely-if': 'off',
     'no-continue': 'off',
     'guard-for-in': 'off',
-    'linebreak-style': ['error', 'windows'],
+    'linebreak-style': ['error', 'unix'],
     'vue/no-multiple-template-root': 'off',
     semi: ['error', 'never'],
+    '@typescript-eslint/no-explicit-any': 0,
     'vuejs-accessibility/label-has-for': [
       'off',
       {

@@ -19,23 +19,35 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { closeModal } from '@/hook/modal.hook'
+import {
+  count, amount, name, isEdit, id,
+} from './hook/modal.hook'
 
 const store = useStore()
-const count = ref(1)
-const amount = ref(0)
-const name = ref('')
 
 const onSubmit = () =>
 {
+  console.log()
   const newTask = {
     name: name.value,
     amount: amount.value,
     count: count.value,
   }
-  store.dispatch('lists/asyncCreateList', newTask)
+  if (isEdit.value)
+  {
+    store.dispatch('lists/asyncCreateList', newTask)
+  }
+  else
+  {
+    console.log('upd')
+    newTask.id = id.value
+    store.dispatch('lists/asyncUpdateListId', newTask)
+    name.value = ''
+    amount.value = ''
+    count.value = ''
+  }
   closeModal()
 }
 </script>

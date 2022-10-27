@@ -17,7 +17,7 @@
           <app-task v-for="task in requestTasks" :key="task.date" :task='task'></app-task>
         </ul>
         <h3 class="main-body__subtitle main-body-subtitle subtitle" v-else>Добавте первую задачу</h3>
-        <button class="task__add icon" @click="toggleModal">
+        <button class="task__add icon" @click="openModal">
           <svg width="13" height="13"><path d="M6 6V.5a.5.5 0 0 1 1 0V6h5.5a.5.5 0 1 1 0 1H7v5.5a.5.5 0 1 1-1 0V7H.5a.5.5 0 0 1 0-1H6z" fill="currentColor" fill-rule="evenodd"></path></svg>
           <span>Добавить задачу</span>
         </button>
@@ -42,9 +42,16 @@ import { isAsideOpen } from './hook/aside.hook'
 import AppModal from './components/ui/AppModal/AppModal.vue'
 import RequestModal from './components/Requests/RequestModal.vue'
 import { isModalOpen, toggleModal } from './hook/modal.hook'
+import { isEdit } from './components/Requests/hook/modal.hook'
 
 const store = useStore()
 store.dispatch('lists/asyncLoad')
+
 const requestTasks = computed(() => store.state.lists.requests)
 
+const openModal = () =>
+{
+  isEdit.value = true
+  toggleModal()
+}
 </script>

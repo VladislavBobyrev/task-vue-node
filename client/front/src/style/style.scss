@@ -22,9 +22,11 @@
 @import "./ui/checkbox";
 @import "./ui/form-control";
 @import "./ui/button";
+
 //=====================================================
-//                 LAYOUTS
+//                 MIXIN
 //=====================================================
+@import "./mixin/scroll";
 
 //=====================================================
 //                 PAGES
@@ -36,5 +38,4 @@
 @import "../components/TheHeader/TheHeader";
 @import "../components/TheNav/TheNav";
 @import "../components/AppTask/appTask";
-// @import "../components/ui/app-modal";
 @import "../components/Requests/request-modal";

@@ -8,6 +8,7 @@ export const getData = async (src:string) =>
   const { data } = await axios.get(src)
   return data
 }
+
 export const postData = async (src:string, options:any) =>
 {
   const data = await fetch(src, {
@@ -17,7 +18,6 @@ export const postData = async (src:string, options:any) =>
       'Content-Type': 'application/json',
     },
   })
-
   return data
 }
 
@@ -44,7 +44,7 @@ export const postData = async (src:string, options:any) =>
 /**
  * Запись в БД новой задачи
  */
-export function createKeyData(data: any, id: number)
-{
-  return false
-}
+// export function createKeyData(data: any, id: number)
+// {
+//   return false
+// }

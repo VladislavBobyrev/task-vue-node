@@ -1,7 +1,7 @@
 export interface IListTask {
   id: number
   name: string
-  date: Date
+  date?: Date
   price: number
   count: number
 }

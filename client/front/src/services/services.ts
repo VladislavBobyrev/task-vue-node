@@ -1,5 +1,3 @@
-import { getData } from '@/api/api'
-
 /**
  * Создаине новой задачи
  */
