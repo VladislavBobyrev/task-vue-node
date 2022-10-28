@@ -24,12 +24,13 @@ import { closeModal } from '@/hook/modal.hook'
 import {
   count, amount, name, isEdit, id,
 } from './hook/modal.hook'
+import { playVision } from '../../hook/sound.hook'
 
 const store = useStore()
 
 const onSubmit = () =>
 {
-  console.log()
+  playVision()
   const newTask = {
     name: name.value,
     amount: amount.value,

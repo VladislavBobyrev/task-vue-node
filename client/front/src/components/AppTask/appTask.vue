@@ -39,6 +39,7 @@ import {
   count, amount, name, id,
   isEdit,
 } from '../Requests/hook/modal.hook'
+import { playTrash } from '../../hook/sound.hook'
 
 defineProps<{task:any}>()
 
@@ -53,10 +54,11 @@ const deleteList = (id:number) =>
     idSetTimeout = 0
     return
   }
+  playTrash()
   idSetTimeout = setTimeout(() =>
   {
     store.dispatch('lists/asyncDeleteList', id)
-  }, 4000)
+  }, 3000)
 }
 
 

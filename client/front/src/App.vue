@@ -29,6 +29,8 @@
     <app-modal  v-if="isModalOpen" title="Создать задачу">
       <request-modal/>
     </app-modal>
+
+    <the-audio/>
   </teleport>
 </template>
 
@@ -37,12 +39,14 @@ import { computed } from 'vue'
 import { useStore } from 'vuex'
 import TheHeader from './components/TheHeader/TheHeader.vue'
 import TheNav from './components/TheNav/TheNav.vue'
+import TheAudio from './components/Audio/TheAudio.vue'
 import AppTask from './components/AppTask/appTask.vue'
 import { isAsideOpen } from './hook/aside.hook'
 import AppModal from './components/ui/AppModal/AppModal.vue'
 import RequestModal from './components/Requests/RequestModal.vue'
 import { isModalOpen, toggleModal } from './hook/modal.hook'
 import { isEdit } from './components/Requests/hook/modal.hook'
+import { createTaskSound } from './hook/sound.hook'
 
 const store = useStore()
 store.dispatch('lists/asyncLoad')
@@ -51,6 +55,7 @@ const requestTasks = computed(() => store.state.lists.requests)
 
 const openModal = () =>
 {
+  createTaskSound()
   isEdit.value = true
   toggleModal()
 }
