@@ -23,16 +23,15 @@ router.post('/create-task/', (req, res) =>
 //================  update ===================
 router.get('/update-task/', (req, res) =>
 {
-  console.log('update')
   updateTask(listTask,req)
   res.send(listTask)
 })
 
 //================  update id===================
-router.get('/update-id-task/', (req, res) =>
+router.post('/update-taskid/', (req, res) =>
 {
-  updateTaskId(listTask, req)
-  res.send(listTask)
+  console.log(updateTaskId(listTask, req))
+  res.send(updateTaskId(listTask, req))
 })
 
 //================  delete id===================

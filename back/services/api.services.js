@@ -10,10 +10,14 @@ export const updateTask =  (arr, tasks) =>  arr = tasks
 // update task id
 export const updateTaskId =  (arr, task) =>
 {
-  arr.find(item =>
+  return JSON.stringify(arr.map(item =>
   {
-    if(item.id === task.id) item = task
- })
+    if(item.id == task.body.id) {
+      item = task.body
+      item.date = new Date()
+    }
+    return item
+  }))
 }
 
 // delete task id
